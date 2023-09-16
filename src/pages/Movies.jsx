@@ -1,9 +1,9 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { MoviesListBySearch } from '../components/MoviestListBySearch/MoviesListBySearch';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 
- const Movies = ({ onSubmit }) => {
-  const [search, setSearch] = useState('');
+const Movies = ({ onSubmit }) => {
+  // const [search, setSearch] = useState('');
 
   return (
     <>

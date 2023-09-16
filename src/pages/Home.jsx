@@ -21,12 +21,12 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
+    <section>
       {error ? (
         <p>Виникла помилка при завантаженні фільмів.</p>
       ) : (
         <HomeList movies={movies} />
       )}
-    </div>
+    </section>
   );
 };
