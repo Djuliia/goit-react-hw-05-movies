@@ -14,11 +14,11 @@ const MovieDetails = () => {
   useEffect(() => {
     if (!movieId) return;
     // setLoader(true);
-    async function createMovieDetails() {
+    async function createMovieDetails(movieId) {
       try {
         const movie = await fetchMovieDetails(movieId);
         setMovieById(movie);
-        console.log(movie);
+        console.log(movieById);
       } catch (error) {
         // setError(true);
         console.error('Фільм не знайдено', error);
@@ -26,12 +26,12 @@ const MovieDetails = () => {
         // setLoader(false);
       }
     }
-    createMovieDetails();
+    createMovieDetails(movieId);
   }, [movieId]);
 
-  // if (!movieById) {
-  //   return <div>Loading...</div>;
-  // }
+  if (!movieById) {
+    return <div>Loading...</div>;
+  }
 
   const releaseYear = movieById?.release_date?.split('-')[0] || '';
   return (
