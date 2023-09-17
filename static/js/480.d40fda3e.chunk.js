@@ -1,2 +1,0 @@
-(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[480],{683:function(){},480:function(e,t,n){"use strict";n.r(t),n.d(t,{default:function(){return o}});var r=n(184),u=function(){return(0,r.jsx)("div",{})},c=n(683),o=function(e){e.onSubmit;return(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(c.SearchForm,{}),(0,r.jsx)(u,{})]})}}}]);
-//# sourceMappingURL=480.d40fda3e.chunk.js.map
