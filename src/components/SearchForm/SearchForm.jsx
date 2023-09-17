@@ -1,18 +1,16 @@
 import { useSearchParams } from 'react-router-dom';
 
 export const SearchForm = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query' || '');
+  const [, setSearchParams] = useSearchParams();
+  // const query = searchParams.get('query') ?? '';
 
   const handleSubmit = e => {
     e.preventDefault();
-    const movieId = e.currentTarget;
-    if (movieId === '') {
-      return setSearchParams({});
+    const inputValue = e.currentTarget.elements.query.value.trim();
+    if (!inputValue) {
+      setSearchParams({});
     }
-
-    setSearchParams({ query: movieId.elements.query.value });
-    movieId.reset();
+    setSearchParams({ query: inputValue });
   };
 
   return (

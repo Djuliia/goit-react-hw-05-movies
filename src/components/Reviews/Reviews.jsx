@@ -21,7 +21,7 @@ export const Reviews = () => {
       }
     }
     createMovieCredits(movieId);
-  }, [movieId]);
+  }, [movieId, reviews]);
 
   return (
     <ul>

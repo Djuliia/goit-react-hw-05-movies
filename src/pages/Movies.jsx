@@ -9,7 +9,7 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
+  const query = searchParams.get('query') ?? '';
   // const controllerRef = useRef();
   // const [error, setError] = useState(null);
 
