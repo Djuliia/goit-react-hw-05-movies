@@ -17,9 +17,7 @@ const Movies = () => {
     if (!query) {
       return;
     }
-
     setLoading(true);
-
     async function createMoviesByQuery() {
       // if (controllerRef.current) {
       //   controllerRef.current.abort();
