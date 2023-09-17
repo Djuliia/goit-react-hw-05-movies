@@ -18,8 +18,6 @@ const MovieDetails = () => {
       toast.error('Movie not found.');
     }
 
-    return;
-
     async function createMovieDetails() {
       try {
         setLoading(true);
