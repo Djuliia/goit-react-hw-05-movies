@@ -1,42 +1,32 @@
-// import axios from 'axios';
-// import { useEffect, useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
-// export const SearchForm = ({ onSubmit }) => {
-//   const [movies, setMovies] = useState('');
-//   const [searchParams, setSearchParams] = useSearchParams();
-//   const movieId = searchParams.get('movieId') ?? '';
+export const SearchForm = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query' || '');
 
-//   useEffect(() => {
-//     // Тут виконуємо  HTTP-запит за інформацією про користувача
-//     if (movieId === '') return;
+  const handleSubmit = e => {
+    e.preventDefault();
+    const movieId = e.currentTarget;
+    if (movieId === '') {
+      return setSearchParams({});
+    }
 
-//     async function fetchMovie() {
-//       const movie = await axios.get(movieId);
-//       setMovies(movies);
-//     }
+    setSearchParams({ query: movieId.elements.query.value });
+    movieId.reset();
+  };
 
-//     fetchMovie();
-//   }, []);
-
-//   const handleSubmit = e => {
-//     e.preventDefault();
-//     const form = e.currentTarget;
-//     setSearchParams({ movieId: form.elements.movieId.value });
-//     form.reset();
-//   };
-//   return (
-//     <>
-//       <form onSubmit={handleSubmit}>
-//         <input
-//           type="text"
-//           // name="movieId"
-//           autoFocus
-//           autoComplete="off"
-//           placeholder="input movie"
-//         />
-//         <button type="submit">Search</button>
-//       </form>
-//     </>
-//   );
-// };
+  return (
+    <section>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="query"
+          autoFocus
+          autoComplete="off"
+          placeholder="input movie"
+        />
+        <button type="submit">Search</button>
+      </form>
+    </section>
+  );
+};

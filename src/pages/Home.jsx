@@ -1,4 +1,4 @@
-import { HomeList } from 'components/HomeList/HomeList';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 import { useEffect, useState } from 'react';
 import { fetchTrendingMovies } from 'services/api';
 
@@ -21,12 +21,13 @@ export const Home = () => {
   }, []);
 
   return (
-    <section>
+    <div>
+      <h2>Trending today</h2>
       {error ? (
         <p>Виникла помилка при завантаженні фільмів.</p>
       ) : (
-        <HomeList movies={movies} />
+        <MoviesList movies={movies} />
       )}
-    </section>
+    </div>
   );
 };
