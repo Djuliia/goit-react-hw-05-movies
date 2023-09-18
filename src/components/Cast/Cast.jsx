@@ -14,17 +14,14 @@ export const Cast = () => {
     'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/9556d16312333.5691dd2255721.jpg';
 
   useEffect(() => {
-    const controller = new AbortController();
+    // const controller = new AbortController();
     if (!movieId) return;
     async function createMovieCredits() {
       try {
         setLoading(true);
         setError(false);
-        const { cast } = await fetchMovieCredits(movieId, {
-          signal: controller.signal,
-        });
+        const { cast } = await fetchMovieCredits(movieId);
         setCast(cast);
-
       } catch (error) {
         setError(true);
         toast.error('Cast not found');
@@ -33,9 +30,7 @@ export const Cast = () => {
       }
     }
     createMovieCredits(movieId);
-    return () => {
-      controller.abort();
-    };
+    return () => {};
   }, [movieId]);
 
   return (

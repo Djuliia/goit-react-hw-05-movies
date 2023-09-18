@@ -1,13 +1,13 @@
 import { Circles } from 'react-loader-spinner';
 
-export const Loader = () => {
+export const Loader = () => (
   <Circles
-    height="280"
-    width="280"
+    height="100"
+    width="100"
     color="#f6fa1c"
     ariaLabel="circles-loading"
     wrapperStyle={{ position: 'fixed', top: '30%', left: '40%' }}
     wrapperClass=""
     visible={true}
-  />;
-};
+  />
+);

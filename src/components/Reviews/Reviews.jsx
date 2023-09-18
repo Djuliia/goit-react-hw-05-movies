@@ -18,14 +18,11 @@ export const Reviews = () => {
       try {
         setLoading(true);
         setError(false);
-        const { results } = await fetchMovieReviews(movieId, {
-          signal: controller.signal,
-        });
+        const { results } = await fetchMovieReviews(movieId);
         setReviews(results);
-        console.log(reviews);
       } catch (error) {
         setError(true);
-        console.error('Cast не знайдено', error);
+        console.error('Cast not found');
       } finally {
         setLoading(false);
       }
@@ -34,7 +31,7 @@ export const Reviews = () => {
     return () => {
       controller.abort();
     };
-  }, [movieId, reviews]);
+  }, [movieId]);
 
   return (
     <List>

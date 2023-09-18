@@ -36,7 +36,6 @@ const MovieDetails = () => {
         setmovieData(movie);
       } catch (error) {
         setError(true);
-        toast.error('Movie not found.');
       } finally {
         setLoading(false);
       }

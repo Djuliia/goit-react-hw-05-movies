@@ -39,12 +39,8 @@ const Home = () => {
       <h2>Trending today</h2>
       {error &&
         !loading &&
-        toast.error('Помилка завантаження фільмів. Спробуйте ще раз пізніше.')}
-      {movies.length > 0 ? (
-        <MoviesList movies={movies} />
-      ) : (
-        toast.error('На жаль, трендових фільмів не знайдено.')
-      )}
+        toast.error('Error loading movies. Please try again later.')}
+      <MoviesList movies={movies} />
     </PageContainer>
   );
 };

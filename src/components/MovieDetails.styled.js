@@ -9,6 +9,10 @@ export const GoBackLink = styled(Link)`
   display: block;
   text-decoration: none;
   cursor: pointer;
+  transform: text-shadow 0.3s ease;
+  &:hover {
+    text-shadow: -1px -1px 0 hsl(80, 70%, 35%), -2px -2px 1px hsl(80, 70%, 35%);
+  }
 `;
 
 export const Main = styled.main`
@@ -37,13 +41,12 @@ export const StyledLink = styled(NavLink)`
   display: flex;
   color: inherit;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
   &.active {
     color: #f6fa1c;
   }
   &:hover {
     color: #f6fa1c;
+    text-shadow: -1px -1px 0 hsl(80, 70%, 35%), -2px -2px 1px hsl(80, 70%, 35%);
   }
 `;
-
-export const GenresList = styled.ul``;
