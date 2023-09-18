@@ -33,7 +33,7 @@ export async function fetchMovieReviews(movieId) {
 
 export async function fetchSearchMovie(query) {
   const response = await axios.get(
-    `${BASE_URL}search//movie?query=${query}?include_adult=false&language=en-US&page=1&api_key=${API_KEY}`
+    `${BASE_URL}search/movie?query=${query}&include_adult=false&language=en-US&page=1&api_key=${API_KEY}`
   );
   return await response.data;
 }

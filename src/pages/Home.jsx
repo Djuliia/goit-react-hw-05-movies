@@ -1,33 +1,52 @@
+import { PageContainer } from 'components/Layout/Layout.styled';
+import { Loader } from 'components/Loader';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { fetchTrendingMovies } from 'services/api';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    const controller = new AbortController();
     async function createTrendingMovies() {
       try {
-        const { results } = await fetchTrendingMovies();
+        setLoading(true);
+        setError(false);
+        const { results } = await fetchTrendingMovies({
+          signal: controller.signal,
+        });
         setMovies(results);
       } catch (error) {
         setError(true);
-        console.error('Помилка при отриманні трендових фільмів:', error);
+      } finally {
+        setLoading(false);
       }
     }
 
     createTrendingMovies();
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
-    <div>
+    <PageContainer>
+      {loading && <Loader />}
       <h2>Trending today</h2>
-      {error ? (
-        <p>Виникла помилка при завантаженні фільмів.</p>
-      ) : (
+      {error &&
+        !loading &&
+        toast.error('Помилка завантаження фільмів. Спробуйте ще раз пізніше.')}
+      {movies.length > 0 ? (
         <MoviesList movies={movies} />
+      ) : (
+        toast.error('На жаль, трендових фільмів не знайдено.')
       )}
-    </div>
+    </PageContainer>
   );
 };
+
+export default Home;

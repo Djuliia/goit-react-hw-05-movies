@@ -1,16 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const AppContainer = styled.div`
-  height: 100vh;
-`;
-
 export const StyledLink = styled(NavLink)`
   color: #fff;
-  font-size: 24px;
   text-decoration: none;
-
-  &.active {
+  &:hover {
     color: #f6fa1c;
   }
+`;
+
+export const MovieList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 24px;
 `;

@@ -1,13 +1,15 @@
 import { useSearchParams } from 'react-router-dom';
+import { BtnSubmit, Form, Input } from './SearchForm.styled';
+import toast from 'react-hot-toast';
 
 export const SearchForm = () => {
   const [, setSearchParams] = useSearchParams();
-  // const query = searchParams.get('query') ?? '';
 
   const handleSubmit = e => {
     e.preventDefault();
     const inputValue = e.currentTarget.elements.query.value.trim();
     if (!inputValue) {
+      toast.error('Enter the movie');
       setSearchParams({});
     }
     setSearchParams({ query: inputValue });
@@ -15,16 +17,16 @@ export const SearchForm = () => {
 
   return (
     <section>
-      <form onSubmit={handleSubmit}>
-        <input
+      <Form onSubmit={handleSubmit}>
+        <Input
           type="text"
           name="query"
           autoFocus
           autoComplete="off"
-          placeholder="input movie"
+          placeholder="Enter movie"
         />
-        <button type="submit">Search</button>
-      </form>
+        <BtnSubmit type="submit">Search</BtnSubmit>
+      </Form>
     </section>
   );
 };
