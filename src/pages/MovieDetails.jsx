@@ -19,12 +19,13 @@ const MovieDetails = () => {
   const [error, setError] = useState(false);
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? '/');
+  const defaultImg =
+    'https://img.myloview.com/posters/movie-time-poster-vintage-cinema-film-projector-home-movie-theater-and-retro-camera-cinematography-entertainment-equipment-movies-production-festival-banner-vector-illustration-400-170892759.jpg';
+  const releaseYear = movieData?.release_date?.split('-')[0] || '';
 
   useEffect(() => {
     const controller = new AbortController();
-    if (!movieId) {
-      toast.error('Movie not found.');
-    }
+    if (!movieId) return;
 
     async function createMovieDetails() {
       try {
@@ -49,9 +50,7 @@ const MovieDetails = () => {
   if (!movieData) {
     return <Loader />;
   }
-  const defaultImg =
-    'https://img.myloview.com/posters/movie-time-poster-vintage-cinema-film-projector-home-movie-theater-and-retro-camera-cinematography-entertainment-equipment-movies-production-festival-banner-vector-illustration-400-170892759.jpg';
-  const releaseYear = movieData?.release_date?.split('-')[0] || '';
+
   return (
     <>
       <main>
