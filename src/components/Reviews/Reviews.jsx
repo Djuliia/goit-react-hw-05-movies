@@ -18,7 +18,9 @@ export const Reviews = () => {
       try {
         setLoading(true);
         setError(false);
-        const { results } = await fetchMovieReviews(movieId);
+        const { results } = await fetchMovieReviews(movieId, {
+          signal: controller.signal,
+        });
         setReviews(results);
       } catch (error) {
         setError(true);
